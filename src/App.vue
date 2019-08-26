@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="margin: 0px" :style="{backgroundImage:'url('+bgurl+')'}">
+  <div id="app" style="margin: 0px">
     <el-container>
         <el-header>
           <Navbar></Navbar>
@@ -22,7 +22,7 @@ import Navbar from '@/components/Navbar.vue'
       },
       data(){
         return {
-          bgurl:'./src/assets/background.png'
+          
         }
       }
   	}
@@ -36,5 +36,8 @@ import Navbar from '@/components/Navbar.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.bg-outer{
+  position:fixed; top:0; left:0; right:0; bottom:0; overflow:hidden; background:#000; z-index:0; opacity:0.15;
 }
 </style>

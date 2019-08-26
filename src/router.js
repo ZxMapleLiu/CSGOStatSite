@@ -22,9 +22,14 @@ var router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: () => import('./views/Profile.vue')
+      path: '/profile/:id',
+      name: 'profile-id',
+      component: () => import('./views/Profile.vue'),
+    },
+    {
+      path:'/match/:id',
+      name:'match-id',
+      component:()=>import('./views/Match.vue'),
     },
     {
       path: '/setting',
@@ -59,9 +64,8 @@ var router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
-  console.log(store.getters.isLogin)
   if(to.meta.requireLogin == true){
-    if(store.getters.isLogin==false){
+    if(sessionStorage.username == null){
       alert('请先登录！')
       next('/login')
     }

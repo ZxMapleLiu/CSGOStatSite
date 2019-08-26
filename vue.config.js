@@ -8,6 +8,14 @@ module.exports = {
                 pathRewrite: {
                     '^/api': ''
                 }
+            },
+            '/steamapi':{
+                target:'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002',
+                changeOrigin:true,
+                ws:true,
+                pathRewrite:{
+                    '^/steamapi':''
+                }
             }
         }
     },

@@ -12,7 +12,7 @@
     <el-menu-item index="/about">关于</el-menu-item>
     <el-col :span="10">
       <el-menu-item>
-      <el-input v-model="searchText" placeholder="输入STEAM64位ID，STEAMID或者网站用户名"></el-input>
+      <el-input v-model="searchText" placeholder="输入STEAM64位ID"></el-input>
     </el-menu-item>
     </el-col>
     <el-menu-item>
@@ -21,7 +21,7 @@
     <template>
       <el-submenu index v-show="isLogin">
       <template slot="title">{{username}}</template>
-      <el-menu-item index="/profile">我的战绩</el-menu-item>
+      <el-menu-item @click="handleProfile">我的战绩</el-menu-item>
       <el-menu-item index="/setting">设置中心</el-menu-item>
       <el-menu-item @click="handleLogout">登出</el-menu-item>
     </el-submenu>
@@ -62,7 +62,13 @@ export default {
   },
   methods: {
     handleSearch() {
-      console.log(this.searchText);
+      // Axios.get('/api/profile',{params:{
+      //   ID:this.searchText
+      // }}).then(response=>{
+        router.push({name:'profile-id',params:{id:this.searchText}});
+        this.searchText=""
+      //   console.log(response);
+      // })
     },
     handleLogout(){
       Axios.get('/api/logout',{}).then(response=>{
@@ -71,6 +77,24 @@ export default {
         alert(response.data.message)
         router.go("/")
       })
+    },
+    handleProfile(){
+      // Axios.get('/api/profile',{params:{
+      //   ID: sessionStorage.username
+      // }}).then(response=>{
+      //   if(response.data.err_code == 1){
+      //     alert(response.data.msg)
+      //   }
+      //   if(response.data.err_code == 0){
+      if(sessionStorage.steamid!=null)
+      router.push({name:'profile-id',params:{id:sessionStorage.steamid}});
+      else{
+        alert('未绑定STEAMID！');
+      }
+      // router.go("/profile/"+response.data.steamid)
+      //console.log(response.data.steamid)
+      //   }
+      // })
     }
   },
   props: []
