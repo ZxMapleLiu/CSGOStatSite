@@ -1,29 +1,3 @@
-# myproject
+# CSGOStatSite
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+一个使用Vue.js+Vue-Cli编写的CSGO战绩查询网站模板，配合[Node.js后端](https://github.com/ZxMapleLiu/csgo-stat-server)使用
